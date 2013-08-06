@@ -1,6 +1,6 @@
 #csv2json
 
-Utility to convert csv files to json.
+Node.js utility script to convert csv files to json.
 
 You can pass in array columns which will be split at commas.
 
