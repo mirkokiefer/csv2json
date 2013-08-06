@@ -1,22 +1,21 @@
 
-var fs = require('fs')
 var JSONStream = require('JSONStream')
 var csv = require('csv')
 
-var fileStream = fs.createWriteStream(__dirname + '/test.json', {encoding: 'utf8'})
+var argv = require('optimist')
+    .alias('a', 'array-columns')
+    .argv
+
+var arrayColumns = argv.a ? argv.a.split(',') : []
+
 var jsonStream = JSONStream.stringify()
-jsonStream.pipe(fileStream)
 
-var arrayColumns = ['regions']
-
-csv()
-  .from.path(__dirname + '/input.csv', {columns: true})
+var csvStream = csv()
+  .from.options({columns: true})
   .transform(function(row, i) {
-    for (var key in row) {
-      if (arrayColumns.indexOf(key) > -1) {
-        row[key] = row[key].split(',')
-      }
-    }
+    arrayColumns.forEach(function(column) {
+      row[column] = row[column].split(',')
+    })
     return row
   })
   .on('record', function(data) {
@@ -25,3 +24,6 @@ csv()
   .on('end', function() {
     jsonStream.end()
   })
+
+process.stdin.pipe(csvStream)
+jsonStream.pipe(process.stdout)
