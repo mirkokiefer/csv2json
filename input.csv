@@ -1,0 +1,6 @@
+id,name,logo,barcode_format,has_barcode,homepage,map_search,regions
+1,Accor Le Club,aclub,,0,http://clkde.tradedoubler.com/click?p=31821&a=2174962&g=20510056,-,Hotel
+2,AA,,,1,http://www.theaa.com/,-,"AUS,GB"
+3,American AAdvantage,aadvantage,code_39,0,http://www.aa.com/AAdvantage/,-,CAN
+14,AMC Stubs,,upc_a,1,http://www.amcstubs.com/,-,GB
+27,Avis,avis,,1,http://www.avis.com,-,"AT,AUS,CAN,CH,GB,GER,Hotel"
