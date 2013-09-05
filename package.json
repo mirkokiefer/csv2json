@@ -1,5 +1,5 @@
 {
-  "name": "csv2json",
+  "name": "csv-json-transform",
   "version": "0.0.2",
   "description": "transform csv to json",
   "main": "index.js",
